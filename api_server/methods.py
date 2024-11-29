@@ -9,6 +9,8 @@ from mongo import db
 
 async def process_webhook(request: BaseRequest):
     request_json = await request.json()
+    await db.requests.insert_one(request_json)
+
     omi_id = request.match_info['omi_id']
 
     if request_json['structured']:
@@ -18,7 +20,7 @@ async def process_webhook(request: BaseRequest):
         link = await db.links.find_one({'omi_id': omi_id})
         telegram_id = link['telegram_id']
 
-        await bot.send_message(telegram_id, f'{memory.structured.emoji} {memory.structured.title}\n{memory.structured.overview}')
+        await bot.send_message(telegram_id, f'{memory.structured.emoji} <b>{memory.structured.title}</b>\n{memory.structured.overview}')
 
         
     else:
