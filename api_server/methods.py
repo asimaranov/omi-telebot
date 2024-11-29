@@ -9,7 +9,7 @@ from mongo import db
 
 async def process_webhook(request: BaseRequest):
     request_json = await request.json()
-    await db.requests.insert_one(request_json)
+    await db.requests.insert_one({'request': request_json, 'url': request.url})
 
     omi_id = request.match_info['omi_id']
 
