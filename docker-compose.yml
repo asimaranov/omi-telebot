@@ -49,11 +49,11 @@ services:
     command: sh -c "python3 -m listener"
     restart: unless-stopped
 
-  # collect_strings:
-  #   build: .
-  #   volumes:
-  #     - .:/omi_telebot
-  #   command: bash -c "pybabel extract --input-dirs=. -k __ -o locales/omi_telebot.pot && pybabel update -d locales -D omi_telebot -i locales/omi_telebot.pot"
+  collect_strings:
+    build: .
+    volumes:
+      - .:/omi_telebot
+    command: bash -c "pybabel extract --input-dirs=. --ignore venv -k __ -o locales/omi_telebot.pot && pybabel update -d locales -D omi_telebot -i locales/omi_telebot.pot"
 
   compile_strings:
     build: .
@@ -65,7 +65,7 @@ services:
     build: .
     volumes:
       - .:/omi_telebot
-    command: bash -c "pybabel init -d locales -D messages -i locales/omi_telebot.pot -l en"
+    command: bash -c "pybabel init -d locales -D omi_telebot -i locales/omi_telebot.pot -l en"
 
 networks:
   es-net:
