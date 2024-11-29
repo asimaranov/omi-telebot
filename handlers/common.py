@@ -38,7 +38,7 @@ async def send_welcome(message: types.Message, state: FSMContext):
     link = await db.links.find_one({'telegram_id': message.chat.id})
     connection_status = bool(link)
 
-    connection_instructions = '''\
+    connection_instructions = f'''\
 To connect necklace with bot, follow one of the following methods:
 
 <b> Method 1 </b>
@@ -49,7 +49,7 @@ To connect necklace with bot, follow one of the following methods:
 <b> Method 2 </b>
 1. Open Omi app -> Settings -> Developer mode
 1.1. Enable <b>Memory events</b>, <b>Realtime Transcript</b>, <b>Day summary</b>
-1.2. Enter <b>Endpoint url</b> as https://omitelebot.com/webhook?uid={message.chat.id}
+1.2. Enter <b>Endpoint url</b> as https://omitelebot.com/webhook/{link["omi_id"]}
 1.3. Click <b>Save</b> button
 1.4. Open Omi app -> Profile, Copy <b>Your User Id</b>
 1.5. Enter command /start Your User Id
@@ -63,7 +63,7 @@ Here you can connect your necklace with telegram
 
 Necklace connection status: {'✅ Connected' if connection_status else '⚠️ Not connected'}
 
-{connection_instructions if not connection_status else ''}
+{connection_instructions}
 """)
 
     await message.answer(result_text,

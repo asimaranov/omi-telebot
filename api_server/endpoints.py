@@ -5,7 +5,7 @@ from api_server.methods import process_webhook
 
 routes = web.RouteTableDef()
 
-@routes.get(r'/webhook')
+@routes.get(r'/webhook/{omi_id}')
 async def webhook_post(request: BaseRequest):
     """
         ---
@@ -31,7 +31,7 @@ async def webhook_post(request: BaseRequest):
     })
 
 
-@routes.post(r'/webhook')
+@routes.post(r'/webhook/{omi_id}')
 async def webhook_post(request: BaseRequest):
     """
         ---
