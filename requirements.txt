@@ -1,0 +1,11 @@
+git+https://github.com/aiogram/aiogram.git@dev-3.x
+motor==3.5.3
+aiohttp
+aiohttp_cors
+pymongo
+Babel
+aiohttp-swagger
+pyrogram
+tgcrypto
+python-dotenv
+environs

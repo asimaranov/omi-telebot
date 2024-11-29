@@ -1,0 +1,74 @@
+services:
+  mongodb:
+    image: mongo
+    ports:
+      - "27529:27017"
+    volumes:
+      - ./db:/data/db
+    environment:
+      - TZ=Europe/Moscow
+    restart: unless-stopped
+    env_file:
+      - .env
+
+  bot:
+    build: .
+    volumes:
+      - .:/omi_telebot
+
+    environment:
+      PYTHONUNBUFFERED: 1
+      TZ: Europe/Moscow
+
+    command: python3 polling.py
+    restart: unless-stopped
+
+  api_server:
+    build: .
+    volumes:
+      - .:/omi_telebot
+
+    environment:
+      PYTHONUNBUFFERED: 1
+      TZ: Europe/Moscow
+
+    command: sh -c "python3 -m api_server.server"
+    ports:
+      - "25013:25013"
+    restart: unless-stopped
+
+  shop_listener:
+    build: .
+    volumes:
+      - .:/omi_telebot
+
+    environment:
+      PYTHONUNBUFFERED: 1
+      TZ: Europe/Moscow
+
+    command: sh -c "python3 -m listener"
+    restart: unless-stopped
+
+  # collect_strings:
+  #   build: .
+  #   volumes:
+  #     - .:/omi_telebot
+  #   command: bash -c "pybabel extract --input-dirs=. -k __ -o locales/omi_telebot.pot && pybabel update -d locales -D omi_telebot -i locales/omi_telebot.pot"
+
+  compile_strings:
+    build: .
+    volumes:
+      - .:/omi_telebot
+    command: pybabel compile -d locales -D omi_telebot
+
+  add_lang:
+    build: .
+    volumes:
+      - .:/omi_telebot
+    command: bash -c "pybabel init -d locales -D messages -i locales/omi_telebot.pot -l en"
+
+networks:
+  es-net:
+    driver: bridge
+
+
