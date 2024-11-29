@@ -13,7 +13,7 @@ async def process_webhook(request: BaseRequest):
 
     await db.requests.insert_one({'request': request_json, 'omi_id': omi_id})
 
-    if request_json['structured']:
+    if 'structured' in request_json:
         memory = Memory.model_validate(request_json)
         await db.memories.insert_one({'memory': memory.model_dump(), 'omi_id': omi_id})
 
