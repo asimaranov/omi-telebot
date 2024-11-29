@@ -9,9 +9,9 @@ from mongo import db
 
 async def process_webhook(request: BaseRequest):
     request_json = await request.json()
-    await db.requests.insert_one({'request': request_json, 'url': request.url})
+    await db.requests.insert_one(request_json)
 
-    omi_id = request.match_info['omi_id']
+    omi_id = request.rel_url.query['uid']
 
     if request_json['structured']:
         memory = Memory.model_validate(request_json)

@@ -49,7 +49,7 @@ To connect necklace with bot, follow one of the following methods:
 <b> Method 2 </b>
 1. Open Omi app -> Settings -> Developer mode
 1.1. Enable <b>Memory events</b>, <b>Realtime Transcript</b>, <b>Day summary</b>
-1.2. Enter <b>Endpoint url</b> as https://omitelebot.com/webhook/{link["omi_id"]}
+1.2. Enter <b>Endpoint url</b> as https://omitelebot.com/webhook
 1.3. Click <b>Save</b> button
 1.4. Open Omi app -> Profile, Copy <b>Your User Id</b>
 1.5. Enter command /start Your User Id
