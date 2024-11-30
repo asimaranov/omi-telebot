@@ -5,7 +5,6 @@ from environs import Env
 env = Env()
 env.read_env()
 
-MONGO_DOMAIN = env.str('MONGO_DOMAIN')
 BOT_TOKEN = env.str('BOT_TOKEN')
 
 MONGO_URL = env.str('MONGO_URL')
