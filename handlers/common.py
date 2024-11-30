@@ -84,8 +84,12 @@ async def help(message_or_query: types.Message):
 ✅ <b>Available commands:</b>
     /start — Launch bot
     /help — Help
-    
+             
+✅ <b>Source:</b> https://github.com/asimaranov/omi-telebot
+✅ <b>Vote for bot:</b> https://devpost.com/software/omitelebot
+         
 ✅ <b>Support:</b> a.simaranov@gmail.com
+             
 """)
     await answer_message_or_query(message_or_query)(
         text,
@@ -109,7 +113,10 @@ Your memories will be sent to the bot once appeared
 ✅ <b>Available commands:</b>
     /start — Launch bot
     /help — Help
-    
+
+✅ <b>Source:</b> https://github.com/asimaranov/omi-telebot
+✅ <b>Vote for bot:</b> https://devpost.com/software/omitelebot
+
 ✅ <b>Support:</b> a.simaranov@gmail.com
 """).format(link['omi_id'] if link else '<b>⚠️ Not connected</b>')
     
