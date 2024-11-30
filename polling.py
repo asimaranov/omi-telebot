@@ -8,6 +8,8 @@ from motor.motor_asyncio import AsyncIOMotorClient
 from bot import omi_telebot
 from commands import Commands
 from handlers.common import common_router
+from handlers.settings import settings_router
+
 from middlewares import UserMiddleware, QueryAnswerMiddleware
 from mongo import db, MongoStorage
 from settings import I18N_DOMAIN, LOCALES_DIR, MONGO_URL
@@ -38,6 +40,7 @@ async def main():
     store_dp.callback_query.outer_middleware(FSMI18nMiddleware(i18n))
 
     store_dp.include_router(common_router)
+    store_dp.include_router(settings_router)
 
     if True:
         await set_commands()
