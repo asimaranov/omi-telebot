@@ -1,6 +1,6 @@
-## Inspiration
+## Omi telebot
 
-Telegram bot with full control over your ai-necklace, what can improve your life better?
+Telegram bot with full control over your ai-necklace, what can improve your life better? Try yourself – https://t.me/omitelebot
 
 ## What it does
 
@@ -35,3 +35,11 @@ Check out positions of your talks on the map
 
 ### Compile strings for localization
 1. Compile strings with `docker-compose up compile_strings`
+
+
+## Screenshots
+Memories             |  Integration guide
+:-------------------------:|:-------------------------:
+![telegram-cloud-photo-size-2-5355198330164077700-y](https://github.com/user-attachments/assets/d50fbcd3-71b1-4761-80b8-5e0af021b505)  |  ![telegram-cloud-photo-size-2-5355198330164077703-y](https://github.com/user-attachments/assets/2a7856b9-314a-45d2-8ce1-990e29aaee9b)
+
+
