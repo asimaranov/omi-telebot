@@ -32,17 +32,16 @@ class CallbackMenuLink:
         return None
 
 class Commands:
-    GO_TO_ADMIN_SECTION = CallbackMenuItem(__('🔥 Let\'s go'), 'go_to_menu')
-    ADMIN_SECTION = CallbackMenuItem(__('«'), 'menu', command='menu')
-    MENU = CallbackMenuItem(__('📋 Menu'), 'menu', command='menu')
+    GO_TO_MAIN_MENU = CallbackMenuItem(__('🔥 Let\'s go'), 'go_to_menu')
+    MAIN_MENU = CallbackMenuItem(__('Manage your necklace'), 'menu', command='menu')
 
     START = CallbackMenuItem('Manage your necklace', 'start', command='start')
+    CONNECTION_INSTRUCTIONS = CallbackMenuItem(__('📜 Connection guide'), '', command='')
+    SETTINGS = CallbackMenuItem('⚙️ Settings', 'settings', command='settings')
 
     SKIP_BOT = CallbackMenuItem(__('⏩ Skip'), 'skip_bot')
 
     HELP = CallbackMenuItem(('ℹ️ Help'), 'help', command='help')
     MANAGE_WALLET = CallbackMenuItem(__('⚙️ Wallet'), 'wallet', command='wallet')
 
-
-
-    
+    EXIT = CallbackMenuItem(__('«'), 'exit')
