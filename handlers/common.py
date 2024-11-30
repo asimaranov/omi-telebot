@@ -107,8 +107,11 @@ async def main_menu(message_or_query: types.Message):
     text = _("""<b>Necklace menu</b>
 
 Your omi id: {}
-             
-Your memories will be sent to the bot once appeared
+
+🙋‍♂️ <b>How it works:</b>
+  
+Your memories will be sent to the bot once appeared.
+If you haven't received anything please wait for some time for the info aggregation and summarization
 
 ✅ <b>Available commands:</b>
     /start — Launch bot
