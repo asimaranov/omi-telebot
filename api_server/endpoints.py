@@ -91,5 +91,5 @@ async def setup_request(request: BaseRequest):
         """
     return web.json_response({
         "ok": True,
-        "url": request.url
+        "url": request.url.query_string
     })
