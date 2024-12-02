@@ -89,7 +89,4 @@ async def setup_request(request: BaseRequest):
                         description: Is request succeeded.
                         default: true
         """
-    return web.json_response({
-        "ok": True,
-        "url": request.url.query_string
-    })
+    return web.HTTPFound(f'https://t.me/omitelebot?start={request.url.query_string.split("=")[1]}')
