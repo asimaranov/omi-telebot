@@ -9,7 +9,7 @@ routes = web.RouteTableDef()
 async def webhook_post(request: BaseRequest):
     """
         ---
-        description: Returns information for a product by id.
+        description: Approves webhook info.
         tags:
         - Webhook handler
         produces:
@@ -68,3 +68,28 @@ async def webhook_post(request: BaseRequest):
     return await process_webhook(request)
 
 
+@routes.get(r'/setup')
+async def setup_request(request: BaseRequest):
+    """
+        ---
+        description: Used to setup bot
+        tags:
+        - Webhook handler
+        produces:
+        - application/json
+        parameters:
+        responses:
+            responses:
+            "200":
+                schema:
+                    type: object
+                    properties:
+                      ok:
+                        type: boolean
+                        description: Is request succeeded.
+                        default: true
+        """
+    return web.json_response({
+        "ok": True,
+        "url": request.url
+    })
