@@ -87,7 +87,8 @@ async def help(message_or_query: types.Message):
              
 ✅ <b>Source:</b> https://github.com/asimaranov/omi-telebot
 ✅ <b>Vote for bot:</b> https://devpost.com/software/omitelebot
-⭐️⭐⭐ <b>Rate app:</b> https://h.omi.me/apps/omi-telebot-01JDVY9WPXH7KNE13DAA3GBRTE
+             
+⭐️ <b>Rate app:</b> https://h.omi.me/apps/omi-telebot-01JDVY9WPXH7KNE13DAA3GBRTE
 
 ✅ <b>Support:</b> a.simaranov@gmail.com
              
@@ -120,7 +121,8 @@ If you haven't received anything please wait for some time for the info aggregat
 
 ✅ <b>Source:</b> https://github.com/asimaranov/omi-telebot
 ✅ <b>Vote for bot:</b> https://devpost.com/software/omitelebot
-⭐️⭐⭐ <b>Rate app:</b> https://h.omi.me/apps/omi-telebot-01JDVY9WPXH7KNE13DAA3GBRTE
+             
+⭐️ <b>Rate app:</b> https://h.omi.me/apps/omi-telebot-01JDVY9WPXH7KNE13DAA3GBRTE
 
 ✅ <b>Support:</b> a.simaranov@gmail.com
 """).format(link['omi_id'] if link else '<b>⚠️ Not connected</b>')
