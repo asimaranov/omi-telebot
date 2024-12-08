@@ -48,7 +48,7 @@ To connect necklace with bot, follow one of the following methods:
 1.1. Tap <b>Install App</b>
 1.2. Tap <b>Setup Omi Telebot</b>
 
-<b>Method 2 [recommended]</b>
+<b>Method 2</b>
 1. Open Omi app -> Settings -> Developer mode
 1.1. Enable <b>Memory events</b>, <b>Realtime Transcript</b>, <b>Day summary</b>
 1.2. Enter <b>Endpoint url</b> as https://omitelebot.com/webhook
@@ -87,7 +87,8 @@ async def help(message_or_query: types.Message):
              
 ✅ <b>Source:</b> https://github.com/asimaranov/omi-telebot
 ✅ <b>Vote for bot:</b> https://devpost.com/software/omitelebot
-         
+⭐️⭐⭐ <b>Rate app:</b> https://h.omi.me/apps/omi-telebot-01JDVY9WPXH7KNE13DAA3GBRTE
+
 ✅ <b>Support:</b> a.simaranov@gmail.com
              
 """)
@@ -119,6 +120,7 @@ If you haven't received anything please wait for some time for the info aggregat
 
 ✅ <b>Source:</b> https://github.com/asimaranov/omi-telebot
 ✅ <b>Vote for bot:</b> https://devpost.com/software/omitelebot
+⭐️⭐⭐ <b>Rate app:</b> https://h.omi.me/apps/omi-telebot-01JDVY9WPXH7KNE13DAA3GBRTE
 
 ✅ <b>Support:</b> a.simaranov@gmail.com
 """).format(link['omi_id'] if link else '<b>⚠️ Not connected</b>')
