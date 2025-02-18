@@ -19,8 +19,8 @@ async def process_webhook(request: BaseRequest):
 
         link = await db.links.find_one({'omi_id': omi_id})
         telegram_id = link['telegram_id']
-
-        await bot.send_message(telegram_id, f'{memory.structured.emoji} <b>{memory.structured.title}</b>\n{memory.structured.overview}')
+        if memory.structured.title:
+            await bot.send_message(telegram_id, f'{memory.structured.emoji} <b>{memory.structured.title}</b>\n{memory.structured.overview}')
     else:
         realtime = RealtimePluginRequest.model_validate(request_json)
         await db.realtime.insert_one({'realtime': realtime.model_dump(), 'omi_id': omi_id})
