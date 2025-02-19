@@ -15,9 +15,9 @@ async def process_webhook(request: BaseRequest):
 
     if 'structured' in request_json:
         saved_request = await db.requests.find_one({'request.id': request_json['id']})
+        print(saved_request)
 
         if saved_request:
-            print(saved_request)
             await db.doubled_request.insert_one({'request': request_json, 'omi_id': omi_id})
             return
 
