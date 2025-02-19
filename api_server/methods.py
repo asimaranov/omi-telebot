@@ -17,6 +17,7 @@ async def process_webhook(request: BaseRequest):
         saved_request = await db.requests.find_one({'request.id': request_json['id']})
 
         if saved_request:
+            print(saved_request)
             await db.doubled_request.insert_one({'request': request_json, 'omi_id': omi_id})
             return
 
