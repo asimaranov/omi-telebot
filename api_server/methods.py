@@ -23,6 +23,8 @@ async def process_webhook(request: BaseRequest):
                     'error': 'Duplicated request'
                 }
             )
+        
+        await db.requests.insert_one({'request': request_json, 'omi_id': omi_id})
 
         memory = Memory.model_validate(request_json)
         await db.memories.insert_one({'memory': memory.model_dump(), 'omi_id': omi_id})
@@ -34,8 +36,7 @@ async def process_webhook(request: BaseRequest):
     else:
         realtime = RealtimePluginRequest.model_validate(request_json)
         await db.realtime.insert_one({'realtime': realtime.model_dump(), 'omi_id': omi_id})
-    
-    await db.requests.insert_one({'request': request_json, 'omi_id': omi_id})
+        await db.requests.insert_one({'request': request_json, 'omi_id': omi_id})
 
     return web.json_response(
         {
