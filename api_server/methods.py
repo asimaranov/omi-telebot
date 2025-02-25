@@ -1,3 +1,4 @@
+import asyncio
 from aiohttp import web
 from aiohttp.web_request import BaseRequest
 
@@ -6,24 +7,26 @@ from api_server.models import Memory, RealtimePluginRequest
 from bot import bot
 from mongo import db
 
+duplicates_lock = asyncio.Lock()
 
 async def process_webhook(request: BaseRequest):
     request_json = await request.json()
     omi_id = request.rel_url.query['uid']
 
     if 'structured' in request_json:
-        saved_request = await db.requests.find_one({'request.id': request_json['id']})
-        print(saved_request)
+        async with duplicates_lock:
+            saved_request = await db.requests.find_one({'request.id': request_json['id']})
+            print(saved_request)
 
-        if saved_request:
-            await db.doubled_request.insert_one({'request': request_json, 'omi_id': omi_id})
-            return web.json_response(
-                {
-                    'ok': False,
-                    'error': 'Duplicated request'
-                }
-            )
-        
+            if saved_request:
+                await db.doubled_request.insert_one({'request': request_json, 'omi_id': omi_id})
+                return web.json_response(
+                    {
+                        'ok': False,
+                        'error': 'Duplicated request'
+                    }
+                )
+            
         await db.requests.insert_one({'request': request_json, 'omi_id': omi_id})
 
         memory = Memory.model_validate(request_json)
